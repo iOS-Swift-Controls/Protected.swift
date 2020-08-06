@@ -1,7 +1,8 @@
 import XCTest
 
-import Protected_swiftTests
+import ProtectedTests
 
 var tests = [XCTestCaseEntry]()
-tests += Protected_swiftTests.allTests()
+tests += ProtectedTests.__allTests()
+
 XCTMain(tests)
