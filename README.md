@@ -34,7 +34,7 @@ class MyClass {
     var mutableState: Int = 0
     
     func someMethod() {
-        DispatchQueue.concurrentPerform(iterations: 10_000) { i in
+        DispatchQueue.concurrentPerform(iterations: 1_000) { i in
             $mutableState.write {
                 $0 += i
             }
