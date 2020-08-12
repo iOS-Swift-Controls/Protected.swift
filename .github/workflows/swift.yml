@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: swift build
+      run: swift build --enable-test-discovery
     - name: Run tests
-      run: swift test 
+      run: swift test --enable-test-discovery

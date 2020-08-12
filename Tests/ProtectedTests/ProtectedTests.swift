@@ -36,11 +36,22 @@ final class ProtectedTests: XCTestCase {
 
 final class ProtectedWrapperTests: XCTestCase {
   @Protected var value = "value"
+  @Protected var sum = 0
 
   override func setUp() {
     super.setUp()
 
     value = "value"
+  }
+
+  func testConcurrentSum() {
+    DispatchQueue.concurrentPerform(iterations: 1_000) { i in
+      $sum.write {
+        $0 += i
+      }
+    }
+
+    XCTAssertEqual(sum, 499_500)
   }
 
   func testThatWrappedValuesAreAccessedSafely() {
